@@ -2,8 +2,14 @@
 
 
 Node version => v14.17.5
+
+
 use localhost:500/api
+
+
 For DB used Atlas of mongoDB
+
+
 Install Packege.json
 
 For User Register
