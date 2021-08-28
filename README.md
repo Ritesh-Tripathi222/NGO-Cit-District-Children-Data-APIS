@@ -13,6 +13,8 @@ For DB used Atlas of mongoDB
 Install Packege.json
 
 For User Register
+
+
 http://localhost:5000/api/register
    
    {
@@ -21,6 +23,7 @@ http://localhost:5000/api/register
    }
   
 Login by passing =>  http://localhost:5000/api/login
+
    {
      "email": "",
      "password": ""
@@ -29,7 +32,9 @@ Login by passing =>  http://localhost:5000/api/login
 After Login will generate a Token for further authentication pass that in 
 
 Headers
+
 key=> token
+
 value=>token key
    
    
