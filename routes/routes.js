@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const {getState,addState ,getDistrict ,addDistrict, getChild , addChild,getStateById} = require("../controller/main-api");
+const {getState,addState ,getDistrict ,addDistrict, getChild , addChild,getStateById, getChildByState} = require("../controller/main-api");
 const { addUsers, loginUser,logoutUser } = require("../controller/user");
 const auth = require("../middleware/auth");
 
@@ -27,6 +27,9 @@ router.get("/getdistrict",auth,getDistrict)
 router.post("/adddistrict", auth,addDistrict);
 
 router.get("/getchild",auth,getChild)
+
+//get child according to state
+router.get("/getchild/:state",auth,getChildByState)
 
 //To add child =>  http://localhost:5000/api/addchild
 router.post("/addchild",auth, addChild);

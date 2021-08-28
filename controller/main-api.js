@@ -57,6 +57,14 @@ const getChild = (req, res) => {
     .catch((err) => res.status(400).json("Error: " + err));
 };
 
+const getChildByState = (req, res) => {
+  const  state=(req.params.state);
+  Child.find({state:state})
+    .then((data) => res.json(data))
+    .catch((err) => res.status(400).json("Error: " + err));
+};
+
+
 const addChild = (req, res) => {
   var id = uuidv4()
   const {  name , sex  , dob, fatherName , motherName , state , district} = req.body;
@@ -69,4 +77,4 @@ const addChild = (req, res) => {
 };
 
 
-module.exports = { getState, addState ,getDistrict, addDistrict , getChild , addChild,getStateById};
+module.exports = { getState, addState ,getDistrict, addDistrict , getChild , addChild,getStateById,getChildByState};
