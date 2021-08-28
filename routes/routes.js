@@ -1,29 +1,35 @@
 const express = require("express");
 const router = express.Router();
-var app = express;
 const {getState,addState ,getDistrict ,addDistrict, getChild , addChild,getStateById} = require("../controller/main-api");
-//const { addUsers, loginUser } = require("../controller/userController");
+const { addUsers, loginUser,logoutUser } = require("../controller/user");
+const auth = require("../middleware/auth");
 
-// http://localhost:5000/api/register
-//router.post("/register", addUsers);
-// http://localhost:5000/api/login
-//router.post("/login", loginUser);
 
-router.get("/getstate",getState)
-router.get("/getstate/:id",getStateById)
+// To register user => http://localhost:5000/api/register
+router.post("/register", addUsers);
+//  To Login => http://localhost:5000/api/login
+router.post("/login", loginUser);
 
-// http://localhost:5000/api/addstate
-router.post("/addstate", addState);
+router.post("/logout", auth,logoutUser);
 
-router.get("/getdistrict",getDistrict)
+//To get State
+router.get("/getstate",auth,getState)
 
-// http://localhost:5000/api/adddistrict
-router.post("/adddistrict", addDistrict);
+//To get state by Id
+router.get("/getstate/:id",auth,getStateById)
 
-router.get("/getchild",getChild)
+// To add state => http://localhost:5000/api/addstate
+router.post("/addstate",auth, addState);
 
-// http://localhost:5000/api/addchild
-router.post("/addchild", addChild);
+router.get("/getdistrict",auth,getDistrict)
+
+// To add district => http://localhost:5000/api/adddistrict
+router.post("/adddistrict", auth,addDistrict);
+
+router.get("/getchild",auth,getChild)
+
+//To add child =>  http://localhost:5000/api/addchild
+router.post("/addchild",auth, addChild);
 
 
 module.exports = router;

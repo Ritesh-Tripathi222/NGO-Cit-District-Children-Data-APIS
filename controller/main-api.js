@@ -4,13 +4,14 @@ const Child = require("../models/Child")
 const { v4: uuidv4 } = require('uuid');
 
 
-// state
+//GET ALL STATE
 const getState = (req, res) => {
   State.find()
     .then((data) => res.json(data))
     .catch((err) => res.status(400).json("Error: " + err));
 };
 
+//GET STATE BY ID
 const getStateById = (req, res) => {
     const ik =(req.params.id);
     State.find({id:ik})
@@ -18,7 +19,7 @@ const getStateById = (req, res) => {
       .catch((err) => res.status(400).json("Error: " + err));
   };
   
-
+//ADD STATE
 const addState = (req, res) => {
   var id = uuidv4()
   const {  state } = req.body;
@@ -26,17 +27,18 @@ const addState = (req, res) => {
 
   newState
     .save()
-    .then(() => res.json("State Added Successfully"))
+    .then(() => res.json("State Addition  Successfull"))
     .catch((err) => res.status(400).json("Error: " + err));
 };
 
-// District
+// GET DISDRICT
 const getDistrict = (req, res) => {
   District.find()
     .then((data) => res.json(data))
     .catch((err) => res.status(400).json("Error: " + err));
 };
 
+//ADD DISTRICT
 const addDistrict = (req, res) => {
   var id = uuidv4()
   const {  state , district } = req.body;
@@ -44,11 +46,11 @@ const addDistrict = (req, res) => {
 
   newDistrict
     .save()
-    .then(() => res.json("District Added Successfully"))
+    .then(() => res.json("District Addition Successfull"))
     .catch((err) => res.status(400).json("Error: " + err));
 };
 
-// Child
+// GET CHILD DATA
 const getChild = (req, res) => {
   Child.find()
     .then((data) => res.json(data))
@@ -57,12 +59,12 @@ const getChild = (req, res) => {
 
 const addChild = (req, res) => {
   var id = uuidv4()
-  const {  name , sex  , dob, fatherName , motherName , state , district,stateid ,districtid  } = req.body;
-  const newChild = new Child({ id, name , sex  , dob, fatherName , motherName , state , district,stateid ,districtid });
+  const {  name , sex  , dob, fatherName , motherName , state , district} = req.body;
+  const newChild = new Child({ id, name , sex  , dob, fatherName , motherName , state , district});
 
   newChild
     .save()
-    .then(() => res.json("Child Added Successfully"))
+    .then(() => res.json("Child Addition  Successfull"))
     .catch((err) => res.status(400).json("Error: " + err));
 };
 

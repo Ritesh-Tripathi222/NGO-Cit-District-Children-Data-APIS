@@ -19,6 +19,7 @@ const userSchema = new Schema({
     max: 1024,
     min: 6,
   },
+  token: { type: String },
 });
 
 module.exports = mongoose.model("User", userSchema);
