@@ -14,6 +14,7 @@ Install Packege.json
 
 For User Register
 
+create a user to perform further task
 
 http://localhost:5000/api/register
    
